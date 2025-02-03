@@ -1,0 +1,68 @@
+/* Reset and Global Styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Main App Styling */
+  .App {
+    font-family: Arial, sans-serif; 
+   
+  }
+  
+  /* Section Styling: .neak */
+  .neak {
+    text-align: center; /* Center align all content inside */
+    margin-top: 13px; /* Add spacing from the top */
+    padding: 30px; /* Add padding for better spacing */
+   
+  }
+  
+  /* Heading Styling */
+  .neak h2 {
+    font-size: 28px; /* Heading font size */
+    font-weight: bold; /* Bold font */
+    margin-bottom: 20px; /* Add spacing below heading */
+    color: #333; /* Text color */
+  }
+  
+  /* Navigation Styling */
+  .neak nav {
+    text-align: center; /* Center navigation */
+  }
+  
+  /* Navigation List */
+  .neak ul {
+    display: inline-flex; /* Align items horizontally */
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0; /* No extra spacing */
+  }
+  
+  /* Navigation Items */
+  .neak li {
+    margin: 0 15px; /* Space between items */
+    font-size: 18px; /* Font size for items */
+    font-weight: 500; /* Slightly bold text */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    color: #8b8484; /* Dark gray text color */
+    transition: color 0.2s; /* Smooth hover effect */
+  }
+  
+  .neak li:hover {
+    color: #00a2ff; /* Darker text on hover */
+  }
+  /* General styling for links */
+.neak nav ul li a {
+  text-decoration: none;
+  color: black; /* Default color */
+  transition: color 0.2s ease; /* Smooth color transition */
+}
+
+/* Change color on hover */
+.neak nav ul li a:hover {
+  color: #007bff; /* Replace with your desired hover color */
+}
+
+  

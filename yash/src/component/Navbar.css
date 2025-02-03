@@ -1,0 +1,103 @@
+/* Base styles */
+.left {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    color: black;
+}
+
+img {
+    width: 90px;
+    margin-left: 18px;
+}
+
+h2 {
+    color: #298FCE;
+    margin: 0; 
+    font-size: 24px; /* Adjust the font size */
+}
+
+.contener {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: white;
+    box-shadow: 1px 8px 4px grey;
+    padding: 10px; 
+}
+
+.navbar {
+    margin-left: auto;
+    display: flex;
+}
+
+nav ul {
+    display: flex;
+    gap: 15px; /* Add space between buttons */
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+button {
+    background: #298FCE;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: rgb(90, 80, 80);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contener {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align content to the left */
+        padding: 15px;
+    }
+
+    .left {
+        justify-content: space-between; 
+        width: 100%; 
+    }
+
+    .navbar {
+        width: 100%; 
+        justify-content: center; /* Center the navigation buttons */
+        margin-top: 10px;
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%; /* Make buttons full-width */
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px; /* Further reduce font size for smaller screens */
+    }
+
+    img {
+        width: 70px; /* Adjust logo size */
+    }
+
+    button {
+        padding: 10px; /* Reduce padding for buttons */
+        font-size: 12px; /* Smaller button text */
+    }
+}
