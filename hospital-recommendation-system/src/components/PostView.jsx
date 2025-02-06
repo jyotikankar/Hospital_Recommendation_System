@@ -9,6 +9,27 @@ const PostView = () => {
   const [patientStatus, setPatientStatus] = useState("");
   const [admissionDate, setAdmissionDate] = useState("");
   const [dischargeDate, setDischargeDate] = useState("");
+  const [rating, setRating] = useState(0);
+  const [ratingsList, setRatingsList] = useState([]);
+
+
+  const handleRating = (value) => {
+    setRating(value);
+  };
+
+
+  const submitRating = () => {
+    if (rating > 0) {
+      setRatingsList([...ratingsList, rating]);
+      setRating(0);
+    }
+  };
+
+  const calculateAverageRating = () => {
+    if (ratingsList.length == 0) return 0;
+    const sum = ratingsList.reduce((acc, curr) => acc + curr, 0);
+    return (sum / ratingsList.length).toFixed(1);
+  };
 
 
   return (
@@ -26,32 +47,63 @@ const PostView = () => {
 
 
       <div className='row d-flex mt-5'>
+
         <div className='col-lg-4 col-sm-12'>
           <div>
-            <label style={{ width: '100px' }}> City: </label>
+            <label className='label' style={{ width: '100px' }}> City: </label>
           </div>
 
           <div>
             <select className='select p-2' value={city} onchange={(e) => setCity(e.target.value)} >
-              <option value=""> Select City </option>
-              <option value="Kolkata"> Kolkata </option>
-              <option value="Mumbai"> Mumbai </option>
-              <option value="Pune"> Pune </option>
-              <option value="Delhi"> Delhi </option>
-              <option value="Hyderabad"> Hyderabad </option>
-              <option value="Ahmedabad"> Ahmedabad </option>
-              <option value="Vellore"> Vellore </option>
-              <option value="Jaipur"> Jaipur </option>
-              <option value="Chennai"> Chennai </option>
-              <option value="Bangalore"> Bangalore </option>
-              <option value="Kerala"> Kerala </option>
+              <option value=""> Select Area </option>
+              <option value="Gurudev Nagar"> Gurudev Nagar</option>
+              <option value="Samrala Road"> Samrala Road</option>
+              <option value="Civil Lines"> Civil Lines </option>
+              <option value="Tagore Nagar"> Tagore Nagar </option>
+              <option value="Ferozpur Road"> Ferozpur Road </option>
+              <option value="Model Town"> Model Town </option>
+              <option value="Brown Road CMC Campus"> Brown Road CMC Campus </option>
+              <option value="Krishna nagar"> Krishna nagar </option>
+              <option value="Sherpur Chowk"> Sherpur Chowk </option>
+              <option value="Doraha"> Doraha </option>
+              <option value="KitchluNagar"> KitchluNagar </option>
+              <option value="G.T. Road"> G.T. Road </option>
+              <option value="BRS Nagar"> BRS Nagar </option>
+              <option value="Kohara"> Kohara </option>
+              <option value="Jamalpur Colony"> Jamalpur Colony </option>
+              <option value="Cheema Chowk"> Cheema Chowk </option>
+              <option value="Urban Estate Dugri"> Urban Estate Dugri </option>
+              <option value="Pakhowal Road"> Pakhowal Road </option>
+              <option value="Hambran Road"> Hambran Road </option>
+              <option value="Khanna"> Khanna </option>
+              <option value="Haibowal Kalan"> Haibowal Kalan</option>
+              <option value="Shaheed Udham Singh Nagar"> Shaheed Udham Singh Nagar </option>
+              <option value="Baba Than Singh Chowk"> Baba Than Singh Chowk</option>
+              <option value="Sunder Nagar"> Sunder Nagar </option>
+              <option value="Srabha Nagar"> Srabha Nagar</option>
+              <option value="Madhopuri"> Madhopuri </option>
+              <option value="Chandigarh Road"> Chandigarh Road </option>
+              <option value="Focal Point"> Focal Point </option>
+              <option value="Gill Road"> Gill Road </option>
+              <option value="Basti jodhewal"> Basti jodhewal </option>
+              <option value="Industrial Area"> Industrial Area </option>
+              <option value="Fountain Plaza"> Fountain Plaza </option>
+              <option value="Shingar Road"> Shingar Road </option>
+              <option value="Kochar Market"> Kochar Market </option>
+              <option value="Baddowal"> Baddowal </option>
+              <option value="Jalandhar Bypass Road"> Jalandhar Bypass Road </option>
+              <option value="Tajpur Road"> Tajpur Road </option>
+              <option value="DMC Road"> DMC Road </option>
+
             </select>
           </div>
+
         </div>
 
         <div className='col-lg-4 col-sm-12'>
+
           <div>
-            <label> Hospital</label>
+            <label className='label'> Hospital</label>
           </div>
 
           <div>
@@ -70,7 +122,7 @@ const PostView = () => {
         <div className='col-lg-4 col-sm-12'>
 
           <div>
-            <label>Are you a patient?</label>
+            <label className='label'>Are you a patient?</label>
           </div>
 
           <div>
@@ -87,7 +139,7 @@ const PostView = () => {
         <div className='col-lg-6 col-sm-12'>
 
           <div>
-            <label >Date of Admission: <span className="text-danger-500">*</span></label>
+            <label className='label' >Date of Admission: <span className="text-danger-500">*</span></label>
           </div>
 
           <div>
@@ -101,7 +153,7 @@ const PostView = () => {
         <div className='col-lg-6 col-sm-12'>
 
           <div>
-            <label >Date of Discharge: <span className="text-danger-500">*</span></label>
+            <label className='label' >Date of Discharge: <span className="text-danger-500">*</span></label>
           </div>
 
           <div>
@@ -112,7 +164,145 @@ const PostView = () => {
         </div>
       </div>
 
-    </div>
+
+      {/* Star Rating System */}
+
+      <div className='container mt-5'>
+        <h2 style={{ fontWeight : '600', fontSize: 'larger' }} >Ratings:</h2>
+        <div className='row w-100  mt-5'>
+
+          <div className='col-lg-4'>
+            Cleanliness
+          </div>
+
+          <div className='col-lg-4'>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span key={star} onClick={() => handleRating(star)} style={{
+                fontSize: '24px', cursor: 'pointer',
+                color: star <= rating ? 'gold' : 'gray',
+              }} >
+                ★
+              </span>
+            ))}
+          </div>
+
+          <div className='col-lg-4'>
+           <button className='btn btn-primary' onClick={submitRating}>Submit Rating</button>
+          </div>
+
+        </div>
+
+
+        <div className='row w-100 mt-5'>
+
+          <div className='col-lg-4'>
+            Patient Care Overview
+          </div>
+
+          <div className='col-lg-4'>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span key={star} onClick={() => handleRating(star)} style={{
+                fontSize: '24px', cursor: 'pointer',
+                color: star <= rating ? 'gold' : 'gray',
+              }} >
+                ★
+              </span>
+            ))}
+          </div>
+
+          <div className='col-lg-4'>
+           <button className='btn btn-primary' onClick={submitRating}>Submit Rating</button>
+          </div>
+
+        </div>
+
+
+
+        <div className='row w-100 mt-5'>
+
+          <div className='col-lg-4'>
+            Availability
+          </div>
+
+          <div className='col-lg-4'>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span key={star} onClick={() => handleRating(star)} style={{
+                fontSize: '24px', cursor: 'pointer',
+                color: star <= rating ? 'gold' : 'gray',
+              }} >
+                ★
+              </span>
+            ))}
+          </div>
+
+          <div className='col-lg-4'>
+           <button className='btn btn-primary' onClick={submitRating}>Submit Rating</button>
+          </div>
+
+        </div>
+
+
+        <div className='row w-100 mt-5'>
+
+          <div className='col-lg-4'>
+            Facilities
+          </div>
+
+          <div className='col-lg-4'>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span key={star} onClick={() => handleRating(star)} style={{
+                fontSize: '24px', cursor: 'pointer',
+                color: star <= rating ? 'gold' : 'gray',
+              }} >
+                ★
+              </span>
+            ))}
+          </div>
+
+          <div className='col-lg-4'>
+           <button className='btn btn-primary' onClick={submitRating}>Submit Rating</button>
+          </div>
+
+        </div>
+
+        <div className='row w-100 mt-5'>
+
+          <div className='col-lg-4'>
+            Time Management
+          </div>
+
+          <div className='col-lg-4'>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span key={star} onClick={() => handleRating(star)} style={{
+                fontSize: '24px', cursor: 'pointer',
+                color: star <= rating ? 'gold' : 'gray',
+              }} >
+                ★
+              </span>
+            ))}
+          </div>
+
+          <div className='col-lg-4'>
+           <button className='btn btn-primary' onClick={submitRating}>Submit Rating</button>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* Display Average Rating  */}
+      <div className='row mt-3'>
+        <div className='col-lg-12'>
+         <h2 style={{ fontWeight: '600', fontSize: 'larger' }} > Overall Rating:  {calculateAverageRating()} ★ </h2>       
+        </div>
+      </div> 
+
+      <button className='btn border'>
+        Post
+      </button>
+
+    </div> //post-view-container
 
   );
 };
