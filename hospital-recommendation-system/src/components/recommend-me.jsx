@@ -1,7 +1,7 @@
 import './recommend-me.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
-import banner from '../banner.jpg';
+
 
 const Dropdown = () => {
   const [selectedCity, setSelectedCity] = useState("All Cities");
@@ -30,7 +30,7 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 5 Lakhs', 
             treatment: 'Anesthesiology',
-            image: './banner.jpg',
+            image: 'https://source.unsplash.com/300x200/?healthcare',
             description: 'AIMC Bassi Hospital provides advanced cardiac care with expert doctors.'
           },
           { 
