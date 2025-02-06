@@ -109,9 +109,26 @@ const PostView = () => {
           <div>
             <select className='select p-2' value={hospital} onChange={(e) => setHospital(e.target.value)}>
               <option value="">Select a Hospital</option>
-              <option value="Hospital A">Hospital A</option>
-              <option value="Hospital B">Hospital B</option>
-              <option value="Hospital C">Hospital C</option>
+              <option value="AIMC Bassi Hospita">AIMC Bassi Hospita</option>
+              <option value="Aastha Kidney And Super Speciality Hospital">Aastha Kidney And Super Speciality Hospital</option>
+              <option value="Christian Medical College And Hospital">Christian Medical College And Hospital</option>
+              <option value="SPS Apollo Hospital">SPS Apollo Hospital</option>
+              <option value="Raman Hospital">Raman Hospital</option>
+              <option value="S A S Grewal Memorial Multispeciality Hospital">S A S Grewal Memorial Multispeciality Hospital</option>
+              <option value="Rattan Multispecialty Hospital And Diagnostic Centre">Rattan Multispecialty Hospital And Diagnostic Centre</option>
+              <option value="Sidhu Hospital Pvt Ltd">Sidhu Hospital Pvt Ltd</option>
+              <option value="Suman Hospital">Suman Hospital</option>
+              <option value="Indo German Hospital">Indo German Hospital</option>
+              <option value="Satyam Hospital">Satyam Hospital</option>
+              <option value="SPS Hospitals (Satguru Partap Singh Hospitals)">SPS Hospitals (Satguru Partap Singh Hospitals)</option>
+              <option value="Sirish Hospital">Sirish Hospital</option>
+              <option value="S A S Grewal Memorial Multispeciality Hospital">S A S Grewal Memorial Multispeciality Hospital</option>
+              <option value="Bawa Hospital Pvt Ltd">Bawa Hospital Pvt Ltd</option>
+              <option value="Vasan Eye Care Hospital">Vasan Eye Care Hospital</option>
+              <option value="Batra Eye Hospital">Batra Eye Hospital</option>
+              <option value="Preet Hospital">Preet Hospital</option>
+
+              
             </select>
           </div>
 
