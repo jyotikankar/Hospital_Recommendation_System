@@ -127,8 +127,6 @@ const PostView = () => {
               <option value="Vasan Eye Care Hospital">Vasan Eye Care Hospital</option>
               <option value="Batra Eye Hospital">Batra Eye Hospital</option>
               <option value="Preet Hospital">Preet Hospital</option>
-
-              
             </select>
           </div>
 
