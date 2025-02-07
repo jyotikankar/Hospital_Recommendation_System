@@ -354,9 +354,9 @@ const Dropdown = () => {
                     transform: isHovered ? "translateY(0)" : "translateY(100%)",
                     transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out"
                   }}
-                >
+                 >
                   <h4> {hospital.name} </h4>
-                  <div>
+                  <div className='mt-3'>
                     <button className="btn btn-sm me-2 " style={{ backgroundColor: '#c32148', color: 'white' }}>
                       Ambulance
                     </button>
