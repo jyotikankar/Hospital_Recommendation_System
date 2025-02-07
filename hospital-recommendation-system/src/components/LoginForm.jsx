@@ -4,6 +4,8 @@ import { auth } from "./firebaseConfig"; // Firebase auth import karein
 import './LoginForm.css';
 import logo from '../logo.jpg';
 import Create from './create_new_account';
+import { doc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "./firebaseConfig";
 
 const LoginForm = ({ isOpen, onClose, setUser }) => {
   const [isCreateOpen, setCreateOpen] = useState(false);
@@ -21,10 +23,14 @@ const LoginForm = ({ isOpen, onClose, setUser }) => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       setUser(user); 
-  
-      console.log("User Logged In: ", user.email);  // ✅ Check if user is logged in
-      
-      onClose();  // ✅ Directly close modal
+      console.log("User Logged In: ", user.email);  
+      const userRef = doc(db, "user_logins", user.uid);
+      await setDoc(userRef, {
+        email: user.email,
+        loginTime: serverTimestamp()
+      }, {merge: true});
+
+      onClose();  
 
     } catch (err) {
       console.error("Login Failed:", err.message);  // ✅ Log error details

@@ -6,6 +6,8 @@ import LoginForm from "./LoginForm";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./firebaseConfig"; // Firebase Authentication import
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { db } from "./firebaseConfig"; // Firestore import karein
+import { doc, updateDoc, serverTimestamp } from "firebase/firestore"; 
 
 const Navbar = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -35,16 +37,22 @@ const Navbar = () => {
   };
 
   const handleLogout = async () => {
-    await signOut(auth);
-    alert("Logout Successfully");
-    setUser(null); // User state ko null karna
+    try {
+      await auth.signOut();
+      setUser(null); // Logout hone ke baad user state reset karna
+      alert("Logout Successfully");
+    } catch (error) {
+      console.error("Logout Failed:", error.message);
+    }
   };
+  
+  
 
   return (
     <>
       <div className='navbar'>
         <div className='navbar-logo'>
-          <img src={logo} /> <h2>Hospital Recommendation System</h2>
+          <img src={logo} alt="Logo" /> <h2>Hospital Recommendation System</h2>
         </div>
 
         <div className='nav-link'>
@@ -72,7 +80,6 @@ const Navbar = () => {
                   </div>
                 </li>
               ) : (
-
                 <li>
                   <button style={{ backgroundColor: '#c32148', borderRadius: '3px' }} onClick={openLoginForm}>
                     <b> LOGIN </b>
