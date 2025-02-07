@@ -1,14 +1,15 @@
 import './recommend-me.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
-
+import hos from '../hos.jpg';
 
 const Dropdown = () => {
   const [selectedCity, setSelectedCity] = useState("All Cities");
   const [selectedTreatment, setSelectedTreatment] = useState("All Treatments");
   const [selectedBudget, setSelectedBudget] = useState("All Budgets");
   const [selectedHospitalType, setSelectedType] = useState("All Types");
-
+  const [isHovered, setIsHovered] = useState(false);
+  
   const [loading, setLoading] = useState(false);
   const [hospitalData, setHospitalData] = useState([]);
   const [recommendations, setRecommendations] = useState("");
@@ -24,23 +25,24 @@ const Dropdown = () => {
         setLoading(false);
 
         const fetchedData = [
+
           { 
-            name: 'AIMC Bassi Hospital', 
-            city: 'Civil Lines', 
+            name: 'S A S Grewal Memorial Multispeciality Hospital', 
+            city: 'GURUDEV NAGAR ', 
             type: 'Private', 
-            budget: 'Within 5 Lakhs', 
-            treatment: 'Anesthesiology',
-            image: 'https://source.unsplash.com/300x200/?healthcare',
-            description: 'AIMC Bassi Hospital provides advanced cardiac care with expert doctors.'
+            budget: 'Within 40 Lakhs', 
+            treatment: 'Cardiology ',
+            image: hos,
           },
+          
           { 
             name: 'Aastha Kidney And Super Speciality Hospital', 
             city: 'Civil Lines', 
             type: 'Government', 
             budget: 'Within 2 Lakhs', 
             treatment: 'Anesthesiology',
-            image: 'https://source.unsplash.com/300x200/?healthcare',
-            description: 'Aastha Kidney And Super Speciality Hospital is a top government hospital offering excellent neurology treatments.'
+            image: hos,
+            
           },
           { 
             name: 'Christian Medical College And Hospital', 
@@ -48,8 +50,8 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 10 Lakhs', 
             treatment: 'Cancer',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'CMC Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+            
           },
           { 
             name: 'SPS Apollo Hospital', 
@@ -57,8 +59,8 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 6 Lakhs', 
             treatment: 'Cancer',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'SPS Apollo Hospital Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+            
           },
           { 
             name: 'Raman Hospital', 
@@ -66,35 +68,58 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 5 Lakh', 
             treatment: 'Cancer',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Raman Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+            
           },
+          
           { 
-            name: 'S A S Grewal Memorial Multispeciality Hospital', 
-            city: 'GURUDEV NAGAR ', 
+            name: 'AIMC Bassi Hospital', 
+            city: 'Civil Lines', 
             type: 'Private', 
-            budget: 'Within 40 Lakhs', 
-            treatment: 'Cardiology ',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'CMC Hospital is known for its cancer treatment and specialized oncologists.'
+            budget: 'Within 5 Lakhs', 
+            treatment: 'Anesthesiology',
+            image: hos,
+            
           },
+
           { 
             name: 'Rattan Multispecialty Hospital And Diagnostic Centre', 
             city: 'Samrala Road', 
             type: 'Private', 
             budget: 'Within 2 Lakhs', 
             treatment: 'Cardiology',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Rattan Multispecialty Hospital And Diagnostic Centre is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+            
           },
+
+          { 
+            name: 'SPS Hospitals (Satguru Partap Singh Hospitals)', 
+            city: 'Sherpur Chowk', 
+            type: 'Private', 
+            budget: 'Within 15 Lakhs', 
+            treatment: 'Dental',
+            image: hos,
+            
+          },
+
+          { 
+            name: 'S A S Grewal Memorial Multispeciality Hospital', 
+            city: 'Gurudev Nagar', 
+            type: 'Private', 
+            budget: 'Within 15 Lakhs', 
+            treatment: 'Diabetes',
+            image: hos,
+            
+          },
+
           { 
             name: 'Sidhu Hospital Pvt Ltd', 
             city: 'Doraha', 
             type: 'Private', 
             budget: 'Within 2 Lakhs', 
             treatment: 'Child Care',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Sidhu Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+           
           },
           { 
             name: 'Suman Hospital', 
@@ -102,8 +127,8 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 4 Lakhs', 
             treatment: 'Child Care',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Suman Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+           
           },
           { 
             name: 'Indo German Hospital', 
@@ -111,8 +136,8 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 14 Lakhs', 
             treatment: 'Cancer',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Indo German Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+           
           },
           { 
             name: 'Satyam Hospital', 
@@ -120,44 +145,28 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 15 Lakhs', 
             treatment: 'Cosmetic & Plastic Surgery',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Satyam Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+           
           },
-          { 
-            name: 'SPS Hospitals (Satguru Partap Singh Hospitals)', 
-            city: 'Sherpur Chowk', 
-            type: 'Private', 
-            budget: 'Within 15 Lakhs', 
-            treatment: 'Dental',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'SPS Hospital is known for its cancer treatment and specialized oncologists.'
-          },
+          
           { 
             name: 'Sirish Hospital', 
             city: 'Civil Lines', 
             type: 'Private', 
             budget: 'Within 11 Lakhs', 
             treatment: 'Dermatology',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Sirish Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+           
           },
-          { 
-            name: 'S A S Grewal Memorial Multispeciality Hospital', 
-            city: 'Gurudev Nagar', 
-            type: 'Private', 
-            budget: 'Within 15 Lakhs', 
-            treatment: 'Diabetes',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'S A S Grewal Memorial Multispeciality Hospital is known for its cancer treatment and specialized oncologists.'
-          },
+          
           { 
             name: 'Bawa Hospital Pvt Ltd', 
             city: 'Civil Lines', 
             type: 'Private', 
             budget: 'Within 17 Lakhs', 
             treatment: 'Emergency',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Bawa Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+           
           },
           { 
             name: 'Vasan Eye Care Hospital', 
@@ -165,8 +174,8 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 16 Lakhs', 
             treatment: 'Eyes',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Vasan Eye Care Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
+            
           },
           { 
             name: 'Batra Eye Hospital', 
@@ -174,7 +183,7 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 18 Lakhs', 
             treatment: 'Eyes',
-            image: 'https://source.unsplash.com/300x200/?medical',
+            image: hos,
             description: 'Batra Eye Hospital is known for its cancer treatment and specialized oncologists.'
           },
           { 
@@ -183,8 +192,7 @@ const Dropdown = () => {
             type: 'Private', 
             budget: 'Within 20 Lakhs', 
             treatment: 'Nephrology',
-            image: 'https://source.unsplash.com/300x200/?medical',
-            description: 'Preet Hospital is known for its cancer treatment and specialized oncologists.'
+            image: hos,
           },
 
         ];
@@ -322,19 +330,48 @@ const Dropdown = () => {
         {/* Hospital Cards */}
         <div className="row mt-5">
           {hospitalData.map((hospital, index) => (
-            <div key={index} className="col-md-4 mb-4">
-              <div className="card shadow-sm">
+            <div key={index} className="col-md-4 mb-4" 
+             onMouseEnter={() => setIsHovered(true)}
+             onMouseLeave={() => setIsHovered(false)}>
+              <div className="card shadow-sm  m-4 position-relative overflow-hidden">
                 <img src={hospital.image} className="card-img-top" alt={hospital.name} />
                 <div className="card-body">
                   <h5 className="card-title">{hospital.name}</h5>
                   <p className="card-text">
-                    <strong>City:</strong> {hospital.city} <br />
+                    <strong>Area:</strong> {hospital.city} <br />
                     <strong>Type:</strong> {hospital.type} <br />
                     <strong>Budget:</strong> {hospital.budget} <br />
                     <strong>Treatment:</strong> {hospital.treatment} <br />
-                    {hospital.description}
-                  </p>
-                  <a href="#" className="btn btn-primary">View Details</a>
+                    {/* {hospital.description} */}
+                  </p> 
+               </div>
+
+                {/* Hover Part */}
+                <div 
+                  className="position-absolute bottom-0 start-0 w-100 h-50 bg-dark bg-opacity-100 text-white text-center p-2"
+                  style={{
+                    opacity: isHovered ? 1 : 0,
+                    transform: isHovered ? "translateY(0)" : "translateY(100%)",
+                    transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out"
+                  }}
+                >
+                  <h4> {hospital.name} </h4>
+                  <div>
+                    <button className="btn btn-sm me-2 " style={{ backgroundColor: '#c32148', color: 'white' }}>
+                      Ambulance
+                    </button>
+                    <button className="btn btn-sm" style={{ backgroundColor: '#c32148', color: 'white' }}>
+                      Location
+                    </button>
+                  </div>
+                  <div className='mt-3'> 
+                    <button className="btn btn-sm me-2 " style={{ backgroundColor: '#c32148', color: 'white' }}>
+                      Plan a Visit
+                    </button>
+                    <button className="btn btn-sm" style={{ backgroundColor: '#c32148', color: 'white' }}>
+                      Post a Review
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
