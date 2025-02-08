@@ -4,9 +4,9 @@ import logo from '../logo.jpg';
 import PopupForm from './ambulance-form';
 import LoginForm from "./LoginForm";
 import { useNavigate } from "react-router-dom";
-import { auth } from "./firebaseConfig"; // Firebase Authentication import
+import { auth } from "./firebaseConfig"; 
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { db } from "./firebaseConfig"; // Firestore import karein
+import { db } from "./firebaseConfig"; 
 import { doc, updateDoc, serverTimestamp } from "firebase/firestore"; 
 
 const Navbar = () => {

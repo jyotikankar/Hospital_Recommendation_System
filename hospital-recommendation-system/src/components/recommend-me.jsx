@@ -2,6 +2,16 @@ import './recommend-me.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import hos from '../hos.jpg';
+import { Link, useNavigate} from "react-router-dom";
+import PopupForm from './ambulance-form';
+import LoginForm from "./LoginForm";
+import PostView from './PostView';
+import { auth } from "./firebaseConfig"; 
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { db } from "./firebaseConfig";
+import VisitForm from './Visit_Form'; 
+
+
 
 const Dropdown = () => {
   const [selectedCity, setSelectedCity] = useState("All Cities");
@@ -10,6 +20,33 @@ const Dropdown = () => {
   const [selectedHospitalType, setSelectedType] = useState("All Types");
   const [isHovered, setIsHovered] = useState(false);
   
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
+
+
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const openLoginForm = () => setIsLoginOpen(true);
+  const closeLoginForm = () => setIsLoginOpen(false);
+
+  const [isVisitOpen, setIsVisitOpen] = useState(false);
+  const openVisit = () => setIsVisitOpen(true);
+  const closeVisit = () => setIsVisitOpen(false);
+  
+  {/* VisitForm Component */}
+  {isVisitOpen && <VisitForm isOpen={isVisitOpen} onClose={closeVisit} />}
+
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Firebase authentication state listener
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser); // User ka data update karna
+    });
+    return () => unsubscribe(); // Cleanup function
+  }, []);
+
   const [loading, setLoading] = useState(false);
   const [hospitalData, setHospitalData] = useState([]);
   const [recommendations, setRecommendations] = useState("");
@@ -17,6 +54,15 @@ const Dropdown = () => {
   const handleSelectChange = (event, setter) => {
     setter(event.target.value);
   };
+
+  const handlePostView = () => {
+    if (!user) {
+      openLoginForm(); // Agar user login nahi hai toh login form open karein
+    } else {
+      navigate("/PostView", { replace: true});
+    }
+  };
+
 
   useEffect(() => {
     const fetchHospitalData = () => {
@@ -83,7 +129,7 @@ const Dropdown = () => {
           },
 
           { 
-            name: 'Rattan Multispecialty Hospital And Diagnostic Centre', 
+            name: 'Rattan Multispecialty Hospital And Diagnostic', 
             city: 'Samrala Road', 
             type: 'Private', 
             budget: 'Within 2 Lakhs', 
@@ -347,35 +393,49 @@ const Dropdown = () => {
                </div>
 
                 {/* Hover Part */}
+
+                
                 <div 
-                  className="position-absolute bottom-0 start-0 w-100 h-50 bg-dark bg-opacity-100 text-white text-center p-2"
+                  className="position-absolute bottom-0 start-0 w-100 h-50 bg-white bg-opacity-100 text-dark text-center p-2"
                   style={{
                     opacity: isHovered ? 1 : 0,
-                    transform: isHovered ? "translateY(0)" : "translateY(100%)",
+                    transform: isHovered ? "translateY(0)" : "translateY(70%)",
                     transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out"
                   }}
                  >
                   <h4> {hospital.name} </h4>
                   <div className='mt-3'>
-                    <button className="btn btn-sm me-2 " style={{ backgroundColor: '#c32148', color: 'white' }}>
-                      Ambulance
-                    </button>
+                  <button 
+                    className="btn btn-sm me-2" 
+                    style={{ backgroundColor: '#c32148', color: 'white' }} 
+                    onClick={() => setIsPopupOpen(true)}
+                   >
+                    Ambulance
+                  </button>
+
                     <button className="btn btn-sm" style={{ backgroundColor: '#c32148', color: 'white' }}>
                       Location
                     </button>
                   </div>
+
                   <div className='mt-3'> 
-                    <button className="btn btn-sm me-2 " style={{ backgroundColor: '#c32148', color: 'white' }}>
+                    <button className="btn btn-sm me-2 " style={{ backgroundColor: '#c32148', color: 'white' }}  onClick={openVisit}>
                       Plan a Visit
                     </button>
-                    <button className="btn btn-sm" style={{ backgroundColor: '#c32148', color: 'white' }}>
+
+                    <button className="btn btn-sm" style={{ backgroundColor: '#c32148', color: 'white' }} onClick={handlePostView}>
                       Post a Review
                     </button>
                   </div>
                 </div>
+
+                <PopupForm isOpen={isPopupOpen} onClose={closePopup} />
+                <LoginForm isOpen={isLoginOpen} onClose={closeLoginForm} />
               </div>
             </div>
           ))}
+
+            <VisitForm isOpen={isVisitOpen} onClose={closeVisit} />
         </div>
         
       </div>

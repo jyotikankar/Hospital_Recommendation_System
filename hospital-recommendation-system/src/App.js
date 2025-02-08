@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginForm from "./components/LoginForm";
 import PostView from "./components/PostView.jsx";
 import { Routes, Route, NavLink, Outlet } from "react-router-dom"; 
+import VisitForm from "./components/Visit_Form";
+
 
 const Layout = () => {
   return (
@@ -53,6 +55,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/PostView" element={<PostView />} />
+          <Route path="/VisitForm" element={<VisitForm />} />
         </Route>
       </Routes>
       <LoginForm setUser={setUser} />
