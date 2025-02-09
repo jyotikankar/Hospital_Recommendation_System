@@ -130,3 +130,29 @@
     opacity: 1;
   }
   
+  .hospital-buttons {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    gap:10px;
+  }
+
+  .hospital-buttons .btn{
+    flex:1;
+    min-width:120px;
+    max-width:200px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  @media (max-width:768px){
+    .hospital-buttons{
+      flex-direction:row;
+      align-items: center;
+
+    }
+
+    .hospital-buttons .btn{
+      width:100%;
+    }
+  }

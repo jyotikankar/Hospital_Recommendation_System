@@ -78,18 +78,10 @@ button:hover {
   }
   
   .dropdown:hover .dropdown-content {
-    display: block; /* Hover hone par visible */
+    display: block; 
   }
   
-  /* Button Styling */
-  .dropdown button {
-    background-color: #c32148;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+ 
   
   .dropdown-content button {
     background-color: #c32148;

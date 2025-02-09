@@ -404,9 +404,9 @@ const Dropdown = () => {
                   }}
                  >
                   <h4> {hospital.name} </h4>
-                  <div className='mt-3'>
+                  <div className=' hospital-buttons mt-3'>
                   <button 
-                    className="btn btn-sm me-2" 
+                    className="btn btn-sm" 
                     style={{ backgroundColor: '#c32148', color: 'white' }} 
                     onClick={() => setIsPopupOpen(true)}
                    >
@@ -418,8 +418,8 @@ const Dropdown = () => {
                     </button>
                   </div>
 
-                  <div className='mt-3'> 
-                    <button className="btn btn-sm me-2 " style={{ backgroundColor: '#c32148', color: 'white' }}  onClick={openVisit}>
+                  <div className='mt-3 hospital-buttons'> 
+                    <button className="btn btn-sm" style={{ backgroundColor: '#c32148', color: 'white' }}  onClick={openVisit}>
                       Plan a Visit
                     </button>
 
