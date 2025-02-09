@@ -74,7 +74,7 @@ const Dropdown = () => {
 
           { 
             name: 'S A S Grewal Memorial Multispeciality Hospital', 
-            city: 'GURUDEV NAGAR ', 
+            city: 'Gurudev Nagar ', 
             type: 'Private', 
             budget: 'Within 40 Lakhs', 
             treatment: 'Cardiology ',
