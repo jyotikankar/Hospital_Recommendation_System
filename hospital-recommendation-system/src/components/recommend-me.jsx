@@ -19,7 +19,9 @@ const Dropdown = () => {
   const [selectedBudget, setSelectedBudget] = useState("All Budgets");
   const [selectedHospitalType, setSelectedType] = useState("All Types");
   const [isHovered, setIsHovered] = useState(false);
-  
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);
@@ -76,7 +78,7 @@ const Dropdown = () => {
             name: 'S A S Grewal Memorial Multispeciality Hospital', 
             city: 'Gurudev Nagar ', 
             type: 'Private', 
-            budget: 'Within 40 Lakhs', 
+            budget: 'Within 8 Lakhs', 
             treatment: 'Cardiology ',
             image: hos,
           },
@@ -112,7 +114,7 @@ const Dropdown = () => {
             name: 'Raman Hospital', 
             city: 'Hambran Road', 
             type: 'Private', 
-            budget: 'Within 5 Lakh', 
+            budget: 'Within 5 Lakhs', 
             treatment: 'Cancer',
             image: hos,
             
@@ -267,87 +269,61 @@ const Dropdown = () => {
             <div className="col-md-3">
               <label htmlFor="treatment">Treatment</label>
               <select id="treatment" className="form-control" value={selectedTreatment} onChange={(e) => handleSelectChange(e, setSelectedTreatment)}>
-                <option value="All Treatments">All Treatments</option>
-                <option value="Anesthesiology">Anesthesiology</option>
-                <option value="Esis">Esis</option>
-                <option value="Ayurvedic ">Ayurvedic </option>
-                <option value="Cancer">Cancer</option>
-                <option value="Cardiac">Cardiac</option>
-                <option value="Cardiology">Cardiology</option>
-                <option value="Child Care">Child Care</option>
-                <option value="Cosmetic & Plastic Surgery ">Cosmetic & Plastic Surgery </option>
-                <option value="Dental">Dental </option>
-                <option value="Dermatology">Dermatology</option>
-                <option value="Diabetes">Diabetes</option>
-                <option value="Emergency">Emergency</option>
-                <option value="ENT">ENT</option>
-                <option value="Eyes">Eyes</option>
-                <option value="Gastroenterologist">Gastroenterologist</option>
-                <option value="Gynecology ">Gynecology </option>
-                <option value="Immunology ">Immunology </option>
-                <option value="Maternity">Maternity</option>
-                <option value="Nephrology">Nephrology</option>
-                <option value="Oncology">Oncology</option>
-                <option value="Psychiatric ">Psychiatric </option>
-                <option value="Radiology">Radiology</option>
-                <option value="Rheumatology">Rheumatology</option>
-                <option value="Urology ">Urology </option>
-
+               <option value="All Treatments">All Treatments</option>
+               <option value="Cardiology">Cardiology</option>
+               <option value="Anesthesiology">Anesthesiology</option>
+               <option value="Cancer">Cancer</option>
+               <option value="Dental">Dental </option>
+               <option value="Diabetes">Diabetes</option>
+               <option value="Child Care">Child Care</option>
+               <option value="Cosmetic & Plastic Surgery">Cosmetic & Plastic Surgery</option>
+               <option value="Dermatology">Dermatology</option>
+               <option value="Emergency">Emergency</option>
+               <option value="Eyes">Eyes</option>
+               <option value="Nephrology">Nephrology</option>
               </select>
             </div>
+
+
             <div className="col-md-3">
               <label htmlFor="city">Ludhiana</label>
               <select id="city" className="form-control" value={selectedCity} onChange={(e) => handleSelectChange(e, setSelectedCity)}>
                 <option value="All Cities">Areas</option>
-                <option value="Gurudev Nagar"> Gurudev Nagar</option>
-                <option value="Samrala Road"> Samrala Road</option>
+                <option value="Gurudev Nagar">Gurudev Nagar</option>
                 <option value="Civil Lines"> Civil Lines </option>
-                <option value="Tagore Nagar"> Tagore Nagar </option>
-                <option value="Ferozpur Road"> Ferozpur Road </option>
-                <option value="Model Town"> Model Town </option>
-                <option value="Brown Road CMC Campus"> Brown Road CMC Campus </option>
-                <option value="Krishna nagar"> Krishna nagar </option>
+                <option value="Brown Road, DMC Road"> Brown Road, DMC Road </option>
                 <option value="Sherpur Chowk"> Sherpur Chowk </option>
-                <option value="Doraha"> Doraha </option>
-                <option value="KitchluNagar"> KitchluNagar </option>
-                <option value="G.T. Road"> G.T. Road </option>
-                <option value="BRS Nagar"> BRS Nagar </option>
-                <option value="Kohara"> Kohara </option>
-                <option value="Jamalpur Colony"> Jamalpur Colony </option>
-                <option value="Cheema Chowk"> Cheema Chowk </option>
-                <option value="Urban Estate Dugri"> Urban Estate Dugri </option>
-                <option value="Pakhowal Road"> Pakhowal Road </option>
                 <option value="Hambran Road"> Hambran Road </option>
+                <option value="Samrala Road"> Samrala Road </option>
+                <option value="Doraha"> Doraha </option>
+                <option value="Model Town"> Model Town </option>
                 <option value="Khanna"> Khanna </option>
-                <option value="Haibowal Kalan"> Haibowal Kalan</option>
-                <option value="Shaheed Udham Singh Nagar"> Shaheed Udham Singh Nagar </option>
-                <option value="Baba Than Singh Chowk"> Baba Than Singh Chowk</option>
-                <option value="Sunder Nagar"> Sunder Nagar </option>
-                <option value="Srabha Nagar"> Srabha Nagar</option>
-                <option value="Madhopuri"> Madhopuri </option>
-                <option value="Chandigarh Road"> Chandigarh Road </option>
-                <option value="Focal Point"> Focal Point </option>
-                <option value="Gill Road"> Gill Road </option>
-                <option value="Basti jodhewal"> Basti jodhewal </option>
-                <option value="Industrial Area"> Industrial Area </option>
-                <option value="Fountain Plaza"> Fountain Plaza </option>
-                <option value="Shingar Road"> Shingar Road </option>
-                <option value="Kochar Market"> Kochar Market </option>
-                <option value="Baddowal"> Baddowal </option>
-                <option value="Jalandhar Bypass Road"> Jalandhar Bypass Road </option>
-                <option value="Tajpur Road"> Tajpur Road </option>
-                <option value="DMC Road"> DMC Road </option>
-              </select>
-            </div>
+                <option value="Ferozpur Road"> Ferozpur Road </option>
+             </select>
+           </div>
+
+
+
             <div className="col-md-3">
               <label htmlFor="budget">Budget</label>
               <select id="budget" className="form-control" value={selectedBudget} onChange={(e) => handleSelectChange(e, setSelectedBudget)}>
                 <option value="All Budgets">All Budgets</option>
                 <option value="Within 2 Lakhs">Within 2 Lakhs</option>
+                <option value="Within 4 Lakhs">Within 4 Lakhs</option>
                 <option value="Within 5 Lakhs">Within 5 Lakhs</option>
+                <option value="Within 6 Lakhs">Within 6 Lakhs</option>
+                <option value="Within 8 Lakhs">Within 8 Lakhs</option>
                 <option value="Within 10 Lakhs">Within 10 Lakhs</option>
+                <option value="Within 11 Lakhs">Within 11 Lakhs</option>
+                <option value="Within 15 Lakhs">Within 15 Lakhs</option>
+                <option value="Within 16 Lakhs">Within 16 Lakhs</option>
+                <option value="Within 17 Lakhs">Within 17 Lakhs</option>
+                <option value="Within 18 Lakhs">Within 18 Lakhs</option>
+                <option value="Within 20 Lakhs">Within 20 Lakhs</option>
               </select>
             </div>
+
+
             <div className="col-md-3">
               <label htmlFor="type">Hospital Type</label>
               <select id="type" className="form-control" value={selectedHospitalType} onChange={(e) => handleSelectChange(e, setSelectedType)}>
@@ -377,8 +353,9 @@ const Dropdown = () => {
         <div className="row mt-5">
           {hospitalData.map((hospital, index) => (
             <div key={index} className="col-md-4 mb-4" 
-             onMouseEnter={() => setIsHovered(true)}
-             onMouseLeave={() => setIsHovered(false)}>
+             onMouseEnter={() => setHoveredIndex(index)}
+             onMouseLeave={() => setHoveredIndex(null)}>
+
               <div className="card shadow-sm  m-4 position-relative overflow-hidden">
                 <img src={hospital.image} className="card-img-top" alt={hospital.name} />
                 <div className="card-body">
@@ -392,14 +369,15 @@ const Dropdown = () => {
                   </p> 
                </div>
 
-                {/* Hover Part */}
-
+                {
+                
+                /* Hover Part */}
                 
                 <div 
                   className="position-absolute bottom-0 start-0 w-100 h-50 bg-white bg-opacity-100 text-dark text-center p-2"
                   style={{
-                    opacity: isHovered ? 1 : 0,
-                    transform: isHovered ? "translateY(0)" : "translateY(70%)",
+                    opacity: hoveredIndex === index ? 1 : 0,
+                    transform: hoveredIndex === index ? "translateY(0)" : "translateY(70%)",
                     transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out"
                   }}
                  >

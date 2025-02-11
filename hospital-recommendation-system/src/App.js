@@ -54,6 +54,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/recommend" element={<Dropdown/>} />
           <Route path="/PostView" element={<PostView />} />
           <Route path="/VisitForm" element={<VisitForm />} />
         </Route>

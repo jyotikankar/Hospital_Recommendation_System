@@ -51,20 +51,20 @@ const Navbar = () => {
   return (
     <>
       <div className='navbar'>
-        <div className='navbar-logo'>
+        <div className='navbar-logo ms-3'>
           <img src={logo} alt="Logo" /> <h2>Hospital Recommendation System</h2>
         </div>
 
         <div className='nav-link'>
           <nav>
             <ul>
-              <li>
-                <button style={{ backgroundColor: '#e60026', borderRadius: '3px' }} onClick={openPopup}>
+              <li >
+                <button style={{ borderRadius: '7px' }} onClick={openPopup}>
                   <b> BOOK AN AMBULANCE </b>
                 </button>
               </li>
               <li>
-                <button style={{ backgroundColor: '#c32148', borderRadius: '3px' }} onClick={handlePostView}>
+                <button style={{ borderRadius: '7px' }} onClick={handlePostView}>
                   <b> POST A VIEW </b>
                 </button>
               </li>
@@ -81,7 +81,7 @@ const Navbar = () => {
                 </li>
               ) : (
                 <li>
-                  <button style={{ backgroundColor: '#c32148', borderRadius: '3px' }} onClick={openLoginForm}>
+                  <button style={{ borderRadius: '7px' , marginRight:'10px' }} onClick={openLoginForm}>
                     <b> LOGIN </b>
                   </button>
                 </li>

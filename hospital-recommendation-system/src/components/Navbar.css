@@ -16,12 +16,12 @@
     gap: 10px;
 }
 
-img {
+.navbar-logo img {
     width: 60px;
     height: auto;
 }
 
-h2 {
+.navbar-logo h2 {
     margin: 0;
     color: #c32148;
     font-size: 1.5rem;
@@ -46,18 +46,17 @@ ul {
 /* Buttons */
 button {
     padding: 12px 15px;
-    border: none;
+    border:2px;
     cursor: pointer;
     color: white;
-    border-radius: 5px;
-    background-color: #c32148;
+    background-color:#c32148;
     transition: 0.3s ease;
     font-size: 1rem;
 }
 
 button:hover {
-    background-color: #a71d3a;
-    color: white;
+   border-color: black;
+    color: black;
 }
 
 
