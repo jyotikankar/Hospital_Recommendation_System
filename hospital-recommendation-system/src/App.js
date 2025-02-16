@@ -7,6 +7,7 @@ import LoginForm from "./components/LoginForm";
 import PostView from "./components/PostView.jsx";
 import { Routes, Route, NavLink, Outlet } from "react-router-dom"; 
 import VisitForm from "./components/Visit_Form";
+import Home from "./components/Home.jsx";
 
 
 const Layout = () => {
@@ -44,7 +45,7 @@ const Layout = () => {
   );
 };
 
-const Home = () => <Dropdown />;
+
 
 const App = () => {
   const [user, setUser] = useState(null);
