@@ -8,7 +8,8 @@ import PostView from "./components/PostView.jsx";
 import { Routes, Route, NavLink, Outlet } from "react-router-dom"; 
 import VisitForm from "./components/Visit_Form";
 import Home from "./components/Home.jsx";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStethoscope, faPhoneAlt, faUserMd, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Layout = () => {
   return (

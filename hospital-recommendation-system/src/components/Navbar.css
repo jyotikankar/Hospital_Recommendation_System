@@ -1,3 +1,7 @@
+div.sticky{
+    position: sticky;
+    top: 0;
+}
 /* Navbar Styling */
 .navbar {
     display: flex;
@@ -7,16 +11,11 @@
     padding: 10px 20px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
     background-color: white;
-    position: fixed;
-    width: 100%;  /* Fix width */
-    top: 0;       /* Stick to top */
-    left: 0;      /* Stick to left */
-    z-index: 1000; /* Ensure it's above other content */
+    position: sticky;
+    top: 0;  
+
 }
   
-
-
-
 /* Logo and Title */
 .navbar-logo {
     display: flex;

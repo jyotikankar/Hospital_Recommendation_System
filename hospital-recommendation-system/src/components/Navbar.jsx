@@ -50,47 +50,48 @@ const Navbar = () => {
 
   return (
     <>
-      <div className='navbar'>
-        <div className='navbar-logo ms-3'>
-          <img src={logo} alt="Logo" /> <h2>Hospital Recommendation System</h2>
-        </div>
+      <div className='sticky'>
+        <div className='navbar'>
+          <div className='navbar-logo ms-3'>
+            <img src={logo} alt="Logo" /> <h2>Hospital Recommendation System</h2>
+          </div>
 
-        <div className='nav-link'>
-          <nav>
-            <ul>
-              <li >
-                <button style={{ borderRadius: '7px' }} onClick={openPopup}>
-                  <b> BOOK AN AMBULANCE </b>
-                </button>
-              </li>
-              <li>
-                <button style={{ borderRadius: '7px' }} onClick={handlePostView}>
-                  <b> POST A VIEW </b>
-                </button>
-              </li>
-
-              {/* User Logged In hai to Dropdown, warna Login Button */}
-              {user ? (
-                <li className="dropdown">
-                  <button className="primary" style={{ padding: '12px 15px'}}>
-                    {user.email} ⬇
+          <div className='nav-link'>
+            <nav>
+              <ul>
+                <li >
+                  <button style={{ borderRadius: '7px' }} onClick={openPopup}>
+                    <b> BOOK AN AMBULANCE </b>
                   </button>
-                  <div className="dropdown-content">
-                    <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
-                  </div>
                 </li>
-              ) : (
                 <li>
-                  <button style={{ borderRadius: '7px' , marginRight:'10px' }} onClick={openLoginForm}>
-                    <b> LOGIN </b>
+                  <button style={{ borderRadius: '7px' }} onClick={handlePostView}>
+                    <b> POST A VIEW </b>
                   </button>
                 </li>
-              )}
-            </ul>
-          </nav>
-        </div>
-      </div>
 
+                {/* User Logged In hai to Dropdown, warna Login Button */}
+                {user ? (
+                  <li className="dropdown">
+                    <button className="primary" style={{ padding: '12px 15px'}}>
+                      {user.email} ⬇
+                    </button>
+                    <div className="dropdown-content">
+                      <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
+                    </div>
+                  </li>
+                ) : (
+                  <li>
+                    <button style={{ borderRadius: '7px' , marginRight:'10px' }} onClick={openLoginForm}>
+                      <b> LOGIN </b>
+                    </button>
+                  </li>
+                )}
+              </ul>
+            </nav>
+          </div>
+        </div>
+     </div>
       <PopupForm isOpen={isPopupOpen} onClose={closePopup} />
       <LoginForm isOpen={isLoginOpen} onClose={closeLoginForm} />
     </>

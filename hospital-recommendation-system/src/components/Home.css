@@ -24,6 +24,7 @@
   max-width: 100%;
   height: auto; /* Image aspect ratio maintain rahe */
   border-radius: 10px;
+  height:400px;
 }
 
 .typewriter {
