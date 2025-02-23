@@ -59,9 +59,10 @@ const App = () => {
           <Route path="/recommend" element={<Dropdown/>} />
           <Route path="/PostView" element={<PostView />} />
           <Route path="/VisitForm" element={<VisitForm />} />
+          <Route path="login" element={<LoginForm setUser={setUser} />} /> {/* Wrapped in <Route> */}
         </Route>
       </Routes>
-      <LoginForm setUser={setUser} />
+      
     </>
   );
 };

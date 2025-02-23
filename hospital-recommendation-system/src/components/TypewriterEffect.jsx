@@ -14,26 +14,38 @@ const TypewriterEffect = () => {
   const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!isDeleting && charIndex < textArray[index].length) {
-        setText((prev) => prev + textArray[index][charIndex]);
+    const currentText = textArray[index];
+
+    // Speed settings for typing and deleting
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseBeforeDelete = 1000; // Pause after completing the sentence
+
+    const handleTyping = () => {
+      if (!isDeleting && charIndex < currentText.length) {
+        setText(currentText.slice(0, charIndex + 1));
         setCharIndex((prev) => prev + 1);
       } else if (isDeleting && charIndex > 0) {
-        setText((prev) => prev.slice(0, -1));
+        setText(currentText.slice(0, charIndex - 1));
         setCharIndex((prev) => prev - 1);
-      } else if (charIndex === 0) {
+      } else if (!isDeleting && charIndex === currentText.length) {
+        setTimeout(() => setIsDeleting(true), pauseBeforeDelete);
+      } else if (isDeleting && charIndex === 0) {
         setIsDeleting(false);
         setIndex((prev) => (prev + 1) % textArray.length);
-      } else {
-        setIsDeleting(true);
       }
-    }, isDeleting ? 50 : 100); // Speed control
+    };
+
+    const timeout = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
 
     return () => clearTimeout(timeout);
-  }, [text, isDeleting, charIndex, index]);
+  }, [charIndex, isDeleting, index]);
 
   return (
-    <h1 className="typewriter">{text} <span className="cursor">|</span></h1>
+    <h1 className="typewriter">
+      {text}
+      <span className="cursor">|</span>
+    </h1>
   );
 };
 
